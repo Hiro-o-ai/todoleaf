@@ -66,3 +66,6 @@ gem 'slim-rails'
 gem 'html2slim'
 
 gem 'bootstrap'
+
+# URLを検出し、リンクにすることができる
+gem 'rails_autolink'

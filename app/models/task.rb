@@ -6,6 +6,8 @@ class Task < ApplicationRecord
 
   belongs_to :user
 
+  scope :recent, -> { order(created_at: :desc)}
+
   private
 
   # もしもnameがnilか空白の場合に名前なしを代入させるメソッド
