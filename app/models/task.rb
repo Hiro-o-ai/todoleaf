@@ -4,6 +4,8 @@ class Task < ApplicationRecord
   validates :name, length: { maximum: 30 }
   validate :validate_name_not_including_comma
 
+  belongs_to :user
+
   private
 
   # もしもnameがnilか空白の場合に名前なしを代入させるメソッド
