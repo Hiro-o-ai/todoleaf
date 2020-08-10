@@ -66,7 +66,7 @@ describe 'タスク管理機能', type: :system do
 
       it 'エラーとなる' do
         within '#error_explanation' do
-          expect(page).to have_content '名称を入力して下さい'
+          expect(page).to have_content '名称を入力してください'
         end
       end
     end
