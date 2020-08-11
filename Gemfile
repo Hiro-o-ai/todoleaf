@@ -71,3 +71,7 @@ gem 'bootstrap'
 
 # URLを検出し、リンクにすることができる
 gem 'rails_autolink'
+
+# 検索用
+gem 'ransack'
+
