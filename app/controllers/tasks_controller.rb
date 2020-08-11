@@ -16,6 +16,12 @@ class TasksController < ApplicationController
     # user_idの代入は Task.new(task_params.merge(user_id: current_user.id))でもOK
     # 下記はhas_manyと記述したことで使用できる関連を利用
     @task = current_user.tasks.new(task_params)
+
+    if params[:back].present?
+      render :new
+      return
+    end
+
     if @task.save
       redirect_to @task, notice: "タスク「#{@task.name}」を登録しました。"
     else
@@ -34,6 +40,11 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     redirect_to tasks_url, notice: "タスク「#{@task.name}」を削除しました。"
+  end
+
+  def confilm_new
+    @task = current_user.tasks.new(task_params)
+    render :new unless @task.valid?
   end
 
   private
