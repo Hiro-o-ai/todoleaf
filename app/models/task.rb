@@ -12,6 +12,17 @@ class Task < ApplicationRecord
     end
   end
 
+  def self.import(file)
+    # CSV.foreachでCSVファイルを一行ずつ読み込む headers: trueで一行目をヘッダーとして無視させる
+    CSV.foreach(file.path, headers: true) do |row|
+      # メソッドがself.なのでnewはTask.newと同じ
+      task = new
+      # slice(*csv_attributes)はslice('name', 'description', 'created_at', 'updated_at')と同義
+      task.attributes = row.to_hash.slice(*csv_attributes)
+      task.save!
+    end
+  end
+
   has_one_attached :image
 
   def self.rensackable_attributes(auth_object = nil)
