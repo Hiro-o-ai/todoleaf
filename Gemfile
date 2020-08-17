@@ -75,3 +75,4 @@ gem 'rails_autolink'
 # 検索用
 gem 'ransack'
 
+gem 'kaminari'
