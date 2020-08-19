@@ -51,8 +51,9 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    # レスポンスボディなしでHTTPステータスに204が送られる
-    head :no_content
+    # redirect_to tasks_url, notice: "タスク「#{@task.name}」を削除しました。"
+    # レスポンスボディなしでHTTPステータスとして204を
+    # head :no_content
   end
 
   def confilm_new
